@@ -1,0 +1,2108 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Fight" version="4">
+  <OBJECT>
+    <ID name="Fight" mc="Standard.Class" uid="d0742bac-bd91-446e-9236-b87cc152e26c"/>
+    <PID name="jeu" mc="Standard.Package" uid="b9c5e171-cfe1-4961-9091-b21bf017f6d5"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Fight]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedOperation">
+        <OBJECT>
+          <ID name="Fight" mc="Standard.Operation" uid="ae9dfc64-d38d-45a5-87ca-61cf00316ea4"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[Fight]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="C1" mc="Standard.Parameter" uid="b5767207-6305-4412-932d-9ad7474c68fe"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[C1]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="C2" mc="Standard.Parameter" uid="782efe30-c1a8-493c-8085-567c3c457278"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[C2]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <LINK relation="Extension">
+              <FOREIGNID name="create" mc="Standard.Stereotype" uid="00700680-0000-0204-0000-000000000000"/>
+            </LINK>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="5d758c31-178e-432c-a50b-024a3395114d"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[this.C1=C1;
+this.C2=C2;
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="StartFight" mc="Standard.Operation" uid="e788ea8e-c963-4da1-bf18-8386cc8b110c"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[StartFight]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="e88c9b2b-42a6-445f-aa95-521ba7856d37"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[C1.setCharacter();
+C2.setCharacter();
+boolean CombatFini=false;
+Character J1=null;
+Character J2=null;
+if(C1.getEXP()>C2.getEXP()){
+    J1=this.C1;
+    J2=this.C2;
+}
+
+else if(C1.getEXP()<C2.getEXP()){
+    J1=this.C2;
+    J2=this.C1;
+}
+
+else if(C1.getEXP()==C2.getEXP()){
+    double i;
+    double j;
+    System.out.println("Tirage au sort");
+    do{
+        i=Math.random();
+        j=Math.random();
+    }while(i==j);
+    
+    if(i>j){
+        J1=this.C1;
+        J2=this.C2;
+
+    }
+    else{
+        J1=this.C2;
+        J2=this.C1;
+
+    }
+}
+int HP1=J1.getVIT();
+int HP2=J2.getVIT();
+
+
+Ability Action1=null;
+Ability Action2=null;
+
+int ite=0;
+    
+
+do{
+    System.out.println("Joueur 1 :"+J1.getName()+" HP:"+HP1+"/"+J1.getVIT());
+    System.out.println("Joueur 2 :"+J2.getName()+" HP:"+HP2+"/"+J2.getVIT());
+    System.out.println("\nBeginning of the round\n.");
+    this.EFFT1=0;
+    this.EFFT2=0;
+    T1attacking=false; 
+    J1.getShi().setWaiting(false);
+    J2.getShi().setWaiting(false);
+    if(ite==0){
+        if(this.Surrender==null){
+            System.out.println(J1.getName()+"'s turn");
+            Action1=this.Action(J1,1);
+        }
+        if(this.Surrender==null){    
+            System.out.println(J2.getName()+"'s turn");
+            Action2=this.Action(J2,2);
+        }
+
+        if(this.Surrender==null){
+            if(this.EFFT1!=0 && ((Action1 instanceof Weapons && !(((Weapons) Action1).isModeDefense())) || (Action1 instanceof Shield && !(((Shield)Action1).isModeDefense())) ||( Action1 instanceof Skill && ((Skill)Action1).getType().equals("Attack")))){
+                if(Action2 instanceof Weapons && ((Weapons)Action2).isModeDefense() || (Action2 instanceof Shield && ((Shield)Action2).isModeDefense() || (Action2 instanceof Skill && ((Skill)Action2).getType().equals("Defense")))){
+                    if(Action2.getEFF()>Action1.getEFF())
+                        Action2.setEFF(Action1.getEFF());
+                    HP2=HP2-(Action1.getEFF()-Action2.getEFF());
+                    System.out.println(J1.getName()+" dealt "+ Action1.getEFF()+" damage.");
+                    System.out.println(J2.getName()+" reduced "+ Action2.getEFF()+" damage");
+                    if(Action1 instanceof Skill && Action2 instanceof Weapons && J2.getWea().getSortParé()==false){
+                        ((Weapons)Action2).setSortParé(true);
+                        System.out.println(J2.getName()+"'s weapon is broken.");
+                    }
+                    else if(Action1 instanceof Skill && Action2 instanceof Shield && J2.getShi().getSortParé()==false){
+                        ((Shield)Action2).setSortParé(true);
+                        System.out.println(J2.getName()+"'s shield is broken.");
+                    }
+                }
+                else{
+                    HP2=HP2-(Action1.getEFF());
+                    System.out.println(J1.getName()+" dealt "+ Action1.getEFF()+" damage.");
+                }
+                     
+            }
+            
+            else if(this.EFFT1!=0 &&( Action1 instanceof Potion || (Action1 instanceof Skill && ((Skill)Action1).getType().equals("Heal")))){
+                if(HP1>0){
+                    HP1+=Action1.getEFF();
+                    if(HP1>J1.getVIT()){
+                        
+                        System.out.println(J1.getName()+" recovered "+(Action1.getEFF()-(HP1-J1.getVIT()))+" HP.");
+                        HP1=J1.getVIT();
+                    }
+                    else{
+                
+                    System.out.println(J1.getName()+" recovered "+Action1.getEFF()+" HP.");
+                
+                    }
+                }
+            }
+            if(this.EFFT2!=0 && ((Action2 instanceof Weapons && !(((Weapons) Action2).isModeDefense())) || (Action2 instanceof Shield && !(((Shield)Action2).isModeDefense())) ||(Action2 instanceof Skill && ((Skill)Action2).getType().equals("Attack")))){
+                HP1=HP1-Action2.getEFF();
+                System.out.println(J2.getName()+" dealt "+ Action2.getEFF()+" damage. ");
+            }
+            else if(this.EFFT2!=0 &&( Action2 instanceof Potion || (Action2 instanceof Skill && ((Skill)Action2).getType().equals("Heal")))){
+                if(HP2>0){
+                    HP2+=Action2.getEFF();
+                    if(HP2>J2.getVIT()){
+                        
+                        System.out.println(J2.getName()+" recovered "+(Action2.getEFF()-(HP2-J2.getVIT()))+" HP.");
+                        HP2=J2.getVIT();
+                    }
+                    else{
+                
+                    System.out.println(J2.getName()+" recovered "+Action2.getEFF()+" HP.");
+                    }
+                }
+            }    
+        }
+        else
+            CombatFini=true;
+    }
+    
+    
+    else if(ite==1){
+        if(this.Surrender==null){
+            System.out.println(J2.getName()+"'s turn");
+            Action2=this.Action(J2,1);
+            }
+        if(this.Surrender==null){
+            System.out.println(J1.getName()+"'s turn");
+            Action1=this.Action(J1,2);
+        }    
+        if(this.Surrender==null){
+            if(this.EFFT1!=0 && ((Action2 instanceof Weapons && !(((Weapons) Action2).isModeDefense())) || (Action2 instanceof Shield && !(((Shield)Action2).isModeDefense())) ||(Action2 instanceof Skill && ((Skill)Action2).getType().equals("Attack")))){
+                if(Action1 instanceof Weapons && ((Weapons)Action1).isModeDefense() || (Action1 instanceof Shield && ((Shield)Action1).isModeDefense() || (Action1 instanceof Skill && ((Skill)Action1).getType().equals("Defense")))){
+                    if(Action1.getEFF()>Action2.getEFF())
+                        Action1.setEFF(Action2.getEFF());
+                    HP1=HP1-(Action2.getEFF()-Action1.getEFF());
+                    System.out.println(J2.getName()+" dealt "+ Action2.getEFF()+" damage.");
+                    System.out.println(J1.getName()+" reduced "+ Action1.getEFF()+" damage");
+                    if(Action2 instanceof Skill && Action1 instanceof Weapons && J1.getWea().getSortParé()==false ){
+                        ((Weapons)Action1).setSortParé(true);
+                        System.out.println(J2.getName()+"'s weapon is broken.");
+                    }
+                    else if(Action2 instanceof Skill && Action1 instanceof Shield  && J1.getShi().getSortParé()==false){        
+                        ((Shield)Action1).setSortParé(true);
+                        System.out.println(J2.getName()+"'s shield is broken.");
+                    }
+                }
+                else{
+                    HP1=HP1-(Action2.getEFF());
+                    System.out.println(J2.getName()+" dealt "+ Action2.getEFF()+" damage.");
+                }
+            }
+            else if(this.EFFT1!=0 &&( Action2 instanceof Potion || (Action2 instanceof Skill && ((Skill)Action2).getType().equals("Heal")))){
+                if(HP2>0){
+                    HP2+=Action2.getEFF();
+                    if(HP2>J2.getVIT()){                
+                        System.out.println(J2.getName()+" recovered "+(Action2.getEFF()-(HP2-J2.getVIT()))+" HP.");
+                        HP2=J2.getVIT();
+                    }
+                    else System.out.println(J2.getName()+" recovered "+Action2.getEFF()+" HP.");
+                }
+            }
+            if(this.EFFT2!=0 && ((Action1 instanceof Weapons && !(((Weapons) Action1).isModeDefense())) || (Action1 instanceof Shield && !(((Shield)Action1).isModeDefense())) ||( Action1 instanceof Skill && ((Skill)Action1).getType().equals("Attack")))){
+                HP2=HP2-Action1.getEFF();
+                System.out.println(J1.getName()+" dealt "+ Action1.getEFF()+" damage. ");
+            }
+            else if(this.EFFT2!=0 &&( Action1 instanceof Potion || (Action1 instanceof Skill && ((Skill)Action1).getType().equals("Heal")))){
+                if(HP1>0){
+                    HP1+=Action1.getEFF();
+                    if(HP1>J1.getVIT()){
+                        System.out.println(J1.getName()+" recovered "+(Action1.getEFF()-(HP1-J1.getVIT()))+" HP.");
+                        HP1=J1.getVIT();
+                    }
+                    else System.out.println(J1.getName()+" recovered "+Action1.getEFF()+" HP.");
+                }
+            }
+        }
+        else CombatFini=true;
+    }
+    ite++;
+    if(ite==2)
+        ite=0;
+    System.out.println("\nEnd of the round\n");
+    if(HP1<0 || HP2<0){
+        System.out.println("\nEnd of the fight\n");
+        CombatFini=true;
+    }
+}while(CombatFini==false);
+
+Scanner input=new Scanner(System.in);
+String s;
+boolean OK=false;
+int i=-1;
+if(HP1<0 || this.Surrender.equals(J1)){
+    System.out.println(J1.getName()+" lost.");
+    System.out.println(J2.getName()+" is the winner.");
+    J2.LevelUp();
+    J1.LevelDown();
+    J1.setNbCap();
+    J2.setNbCap();
+    if(!(J1.getSkills().size()<=J1.getNbCap())){
+        do{
+            System.out.println(J1.getName()+" : You have to remove one of your's skill");
+            System.out.println(J1.SkillList());
+            i=input.nextInt();
+        }while(i<0 || J1.SkillList().length()<i);
+        J1.getSkills().remove(i);
+    }
+    if(this.Surrender.equals(J1)){
+        do{    
+            if(!(J2.getSkills().size()<J2.getNbCap())){
+                System.out.println("Do you want to replace one of your skill ? (Y/N)");
+            }
+            else
+                System.out.println("Do you want to copy one of your opponent's skill ?(Y/N)");
+            s=input.next();
+        }while(!(s.equals("Y") || s.equals("N")));
+        if(s.equals("Y")){
+            if((J2.getSkills().size()<J2.getNbCap())){
+                do{
+                    try{
+                        System.out.println(J2.SkillList());
+                        System.out.println("Which one do you want to remove ?");
+                        i=input.nextInt();
+                    }
+                    catch(InputMismatchException e){}
+                }while(i<0 || J1.SkillList().length()<i);
+                J1.getSkills().remove(i);
+            }
+            do{
+                try{
+                    System.out.println(J1.SkillList());    
+                    System.out.println("Which one do you want to take ?");
+                    i=input.nextInt();
+                    OK=true;
+                }
+                catch(InputMismatchException e){}
+                if(J2.getSkills().contains((Skill)J1.getSkills().get(i)) ){
+                    System.out.println("You already got it");
+                    OK=false;
+                }
+            }while(i<0 || J1.SkillList().length()<i || !(OK));
+            J2.addSkills(new Skill(J1.getSkills().get(i)));
+        }
+    }
+}
+else if(HP2<0 || this.Surrender.equals(J2)){
+    System.out.println(J2.getName()+" lost.");
+    System.out.println(J1.getName()+" is the winner.");
+    J1.LevelUp();
+    J2.LevelDown();
+    J1.setNbCap();
+    J2.setNbCap();    
+    if(this.Surrender.equals(J2)){
+        do{    
+            if(!(J1.getSkills().size()<J1.getNbCap())){
+                System.out.println(J1.getName()+" : Do you want to replace one of your skill ? (Y/N)");
+            }
+            else
+                System.out.println(J1.getName()+" : Do you want to copy one of your opponent's skill ?(Y/N)");
+            s=input.next();
+        }while(!(s.equals("Y") || s.equals("N")));
+        if(s.equals("Y")){
+            if(!(J1.getSkills().size()<J1.getNbCap())){
+                do{
+                    try{
+                        System.out.println(J1.SkillList());
+                        System.out.println("Which one do you want to remove ?");
+                        i=input.nextInt();
+                    }
+                    catch(InputMismatchException e){}
+                }while(i<0 || J1.SkillList().length()<i);
+                J1.getSkills().remove(i);
+            }
+            do{
+                try{
+                    System.out.println(J2.SkillList());    
+                    System.out.println("Which one do you want to take ?");
+                    i=input.nextInt();
+                    OK=true;
+                }
+                catch(InputMismatchException e){
+                }
+                if(J1.getSkills().contains((Skill)J2.getSkills().get(i))){
+                    System.out.println("You already got it");
+                    OK=false;
+                }
+            }while(i<0 || J2.SkillList().length()<i || !(OK) );
+            J1.addSkills(new Skill(J2.getSkills().get(i)));
+        }
+    }
+    if(!(J2.getSkills().size()<=J2.getNbCap())){
+        do{
+            System.out.println(J2.getName()+" : You have to remove one of your's skill");
+            System.out.println(J2.SkillList());
+            i=input.nextInt();
+        }while(i<0 || J2.SkillList().length()<i);
+        J2.getSkills().remove(i);
+    }
+}
+
+J2.getWea().setSortParé(false);
+J2.setVIT();
+J1.setVIT();
+J1.getShi().setWaiting(false);
+J2.getShi().setWaiting(false);
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Action" mc="Standard.Operation" uid="dd7e42eb-b953-409a-bb1a-2d8961cb3e6c"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[Action]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="J" mc="Standard.Parameter" uid="5036235e-417a-4c1b-b1be-366a5017fa16"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[J]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="nj" mc="Standard.Parameter" uid="5353762d-6854-40d7-9127-d844e9996eee"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[nj]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Return">
+              <OBJECT>
+                <ID name="" mc="Standard.Parameter" uid="955fe2e9-8553-4bd0-b833-499af5c2e9c3"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Tag">
+              <OBJECT>
+                <ID name="" mc="Standard.TaggedValue" uid="d1bc5e8a-43e4-4bcf-a348-548dcb2aa9d4"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Actual">
+                    <OBJECT>
+                      <ID name="" mc="Standard.TagParameter" uid="4a01001c-de50-4145-9d3a-5c2f72b5690c"/>
+                      <ATTRIBUTES>
+                        <ATT name="Value"><![CDATA[InputMismatchException]]></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                  <LINK relation="Definition">
+                    <FOREIGNID name="JavaThrownException" mc="Standard.TagType" uid="003800a8-0000-017c-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="d50d9d1c-1953-4c83-be59-25551f590d25"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[return null;]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaReturned" mc="Standard.NoteType" uid="003800a8-0000-0190-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="1cc4de85-bd9e-4b61-a806-f631d078a5ab"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[Scanner input=new Scanner(System.in);
+String s=null;
+if(nj==2 && EFFT1!=0){
+    do{
+        System.out.println(J.getName()+",what do you want to do ?( Attack(A),Defend(D),use a potion(P), use a skill(S) or escape(E) )");
+        s=input.next();
+    }while(!(s.equals("A")|| s.equals("D") || s.equals("P") || s.equals("S") || s.equals("E")));
+}
+else{
+    do{
+        System.out.println(J.getName()+",what do you want to do ?( Attack(A),use a potion(P), use a skill(S) or escape(E) )");
+        s=input.next();
+    }while(!(s.equals("A") ||  s.equals("P") || s.equals("S") || s.equals("E")));
+}
+if(s.equals("A")){
+    do{
+        System.out.println("With your Weapon(W) or your Shield(S) ?");
+        s=input.next();
+    }while(!(s.equals("W") || s.equals("S")));
+    if(s.equals("W")){
+        if(nj==1){
+            EFFT1=J.attackWeapon();
+            if(EFFT1==0)
+                return null;
+        }
+        else if(nj==2){
+            EFFT2=J.attackWeapon();
+            if(EFFT2==0)
+                return null;
+        }
+        if(nj==1 && EFFT1!=0)
+            T1attacking=true;
+        J.getWea().setModeDefense(false);
+        return J.getWea();
+    }
+    else if(s.equals("S")){
+        if(nj==1){
+            EFFT1=J.attackShield();
+            if(EFFT1==0)
+                return null;
+        }
+        else if(nj==2){
+            EFFT2=J.attackShield();
+            if(EFFT2==0)
+                return null;
+        }
+        if(nj==1 && EFFT1!=0)
+            T1attacking=true;
+        J.getShi().setModeDefense(false);
+        return J.getShi();
+    }    
+}
+
+else if(s.equals("D")){
+    do{
+        System.out.println("Defend now(N) or wait and see the attack's damage first(W) ?");
+        s=input.next();
+        
+    }while(!(s.equals("N") || s.equals("W")));
+    if(s.equals("W")){
+        System.out.println("The opponent will deal "+EFFT1+" damage.");
+        J.getShi().setWaiting(true);
+    }
+    do{
+        System.out.println("Defend with your weapon(W) or your shield(S) ? Or Cancel(C)");
+        s=input.next();
+    }while(!(s.equals("W") || s.equals("S") || s.equals("C")));
+    if(s.equals("C"))
+        this.Action(J, nj);
+    if(s.equals("W")){
+        J.getWea().setModeDefense(true);
+        if(nj==1){
+            EFFT1=J.defendWeapon();
+            if(EFFT1==0)
+                return null;
+        }
+        else if(nj==2){
+            EFFT2=J.defendWeapon();
+            if(EFFT2==0)
+                return null;
+        }
+        return J.getWea();
+            
+    }
+    
+    else if(s.equals("S")){
+        J.getShi().setModeDefense(true);
+        if(nj==1){
+            EFFT1=J.defendShield();
+            if(EFFT1==0)
+                return null;
+        }
+        else if(nj==2){
+            EFFT2=J.defendShield();
+            if(EFFT2==0)
+                return null;
+        }
+        return J.getShi();
+            
+    }    
+}
+
+else if(s.equals("P")){
+    if(nj==1){
+        EFFT1=J.usePotion();
+        if(EFFT1==0)
+            return null;
+    }
+    else if(nj==2){
+        EFFT2=J.usePotion();
+        if(EFFT2==0)
+            return null;
+    }
+    return J.getPot();
+}
+
+else if(s.equals("S")){
+    int i;
+    boolean ok=false;
+    do{
+        i=0;
+        try{
+            System.out.println("Which skill do you want to use ?");
+            System.out.println(J.SkillList());
+            i=input.nextInt();
+            ok=true;
+        }
+        catch(InputMismatchException e){
+            System.out.println("Erreur à la saisie.");
+        }
+        if(J.getSkills().get(i).getType().equals("Defense") &&( nj==1 || T1attacking==false)){
+            System.out.println("You can't use a Defense Skill when you're starting the round or when the opponent isn't attacking");
+        }
+    }while(i<0 || i>J.getSkills().size() || (J.getSkills().get(i).getType().equals("Defense") && nj!=2) || ok==false);
+    
+    if(nj==1){
+        EFFT1=J.useSkill(i);
+        if(EFFT1==0)
+            return null;
+    }
+    else if(nj==2){
+        EFFT2=J.useSkill(i);
+        if(EFFT2==0)
+            return null;
+    }
+    if(J.getSkills().get(i).getType().equals("Attack"))
+            if(nj==1 && EFFT1!=0)
+                T1attacking=true;
+        
+    return J.getSkills().get(i);
+
+    
+}
+else if(s.equals("E")){
+    this.Surrender=J;
+    return null;
+}
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="AttackWeapon" mc="Standard.Operation" uid="0f553064-470e-46dd-becd-c5019d22b7cf"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[AttackWeapon]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="c" mc="Standard.Parameter" uid="171aa9f0-301f-4a95-b58c-106e65306f1f"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[c]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Return">
+              <OBJECT>
+                <ID name="" mc="Standard.Parameter" uid="eceb3d17-7a25-4fba-ab05-066d53c604fa"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="867e21c3-35a6-4ffc-ab23-b74f742b3418"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[int EF;
+c.getWea().setModeDefense(false);
+EF=c.attackWeapon();
+if(EF != 0)
+    return c.getWea();
+else return null;
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="DefendWeapon" mc="Standard.Operation" uid="892d41e4-ae40-447f-aa20-0bf1d3daba8b"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[DefendWeapon]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="c" mc="Standard.Parameter" uid="46eac326-4110-48b6-9c94-90923d8d7db1"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[c]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Return">
+              <OBJECT>
+                <ID name="" mc="Standard.Parameter" uid="afc7b591-c801-4e55-b1ea-3a64cd7f1ee8"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="9aed1495-7b5f-4de6-9ac8-3a414659318f"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[int EF;
+c.getWea().setModeDefense(true);
+EF=c.defendWeapon();
+if(EF != 0)
+    return c.getWea();
+else return null;
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="AttackShield" mc="Standard.Operation" uid="490c9a47-0df8-4117-b7a2-70203e35f04f"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[AttackShield]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="c" mc="Standard.Parameter" uid="22a7e638-f3a9-402b-bba1-95125102697f"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[c]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Return">
+              <OBJECT>
+                <ID name="" mc="Standard.Parameter" uid="e39c7b3f-aefd-468f-9093-87cff33c6d26"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="dce90fbe-3383-4cbe-b94f-138ef9496b5a"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[int EF;
+c.getShi().setModeDefense(false);
+EF=c.attackShield();
+if(EF != 0)
+    return c.getShi();
+else return null;
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="DefendShield" mc="Standard.Operation" uid="96740141-7838-47eb-b2a8-183672f8afb9"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[DefendShield]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="c" mc="Standard.Parameter" uid="ac540791-8b7b-4b95-aa40-588accc2bccd"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[c]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Return">
+              <OBJECT>
+                <ID name="" mc="Standard.Parameter" uid="176947f3-0107-4cf9-81a5-dbe321732f87"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="0a3bc7fc-7044-4d93-8b93-5bf40fe60d40"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[int EF;
+c.getWea().setModeDefense(true);
+EF=c.defendShield();
+if(EF != 0)
+    return c.getShi();
+else return null;
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="UseSkill" mc="Standard.Operation" uid="1875448a-bdd7-4d89-ab1f-63e86d101dca"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[UseSkill]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="c" mc="Standard.Parameter" uid="a2e3c8d8-ac6e-4d31-a1f6-226addcbc090"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[c]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="i" mc="Standard.Parameter" uid="6087a621-2fcf-4048-8283-44d65b4f057b"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[i]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Return">
+              <OBJECT>
+                <ID name="" mc="Standard.Parameter" uid="2472f8e3-8720-4022-a044-11f5ee23d8d5"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="d8c7bac7-6426-4882-a0a1-ab18b10eb9cd"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[int EF;
+EF=c.useSkill(i);
+if(EF !=0)
+    return c.getSkills().get(i);
+else return null;
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="UsePot" mc="Standard.Operation" uid="9fb274c8-1796-4f12-8df3-5003c121e37b"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[UsePot]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="IO">
+              <OBJECT>
+                <ID name="c" mc="Standard.Parameter" uid="74822dd0-b118-4aa7-8703-fd1288f6b425"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"><![CDATA[c]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Return">
+              <OBJECT>
+                <ID name="" mc="Standard.Parameter" uid="3f3ad6a3-6c78-4018-8275-48b0bd2de2bd"/>
+                <ATTRIBUTES>
+                  <ATT name="ParameterPassing">In</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="TypeConstraint"></ATT>
+                  <ATT name="DefaultValue"></ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="IsException">false</ATT>
+                  <ATT name="IsStream">false</ATT>
+                  <ATT name="Effect">ReadEffect</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Type">
+                    <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="91016da0-cd59-42c0-b585-46cd9fa14b87"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[int EF;
+EF=c.usePotion();
+if(EF!=0)
+    return c.getPot();
+else return null;
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="setFight" mc="Standard.Operation" uid="242d9bc9-95e9-4c37-a903-e91e3c5e108d"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[setFight]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="863c0cff-5833-4490-b5ca-9c860d0241fb"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[C1.setCharacter();
+C2.setCharacter();
+J1=null;
+J2=null;
+if(C1.getEXP()>C2.getEXP()){
+    J1=this.C1;
+    J2=this.C2;
+}
+
+else if(C1.getEXP()<C2.getEXP()){
+    J1=this.C2;
+    J2=this.C1;
+}
+
+else if(C1.getEXP()==C2.getEXP()){
+    double i;
+    double j;
+    System.out.println("Tirage au sort");
+    do{
+        i=Math.random();
+        j=Math.random();
+    }while(i==j);
+    
+    if(i>j){
+        J1=this.C1;
+        J2=this.C2;
+
+    }
+    else{
+        J1=this.C2;
+        J2=this.C1;
+
+    }
+}
+HP1=J1.getVIT();
+HP2=J2.getVIT();
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="resetTurn" mc="Standard.Operation" uid="eb5fe5d5-06ee-4039-8314-8085c5a6fd73"/>
+          <ATTRIBUTES>
+            <ATT name="Concurrency">false</ATT>
+            <ATT name="Final">false</ATT>
+            <ATT name="Passing">MethodOut</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[resetTurn]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="0311bf3e-83be-453b-9213-02e51afb978a"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[T1attacking=false; 
+J1.getShi().setWaiting(false);
+J2.getShi().setWaiting(false);
+]]></ATT>
+                  <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaCode" mc="Standard.NoteType" uid="003800a8-0000-018e-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="OwnedAttribute">
+        <OBJECT>
+          <ID name="T1attacking" mc="Standard.Attribute" uid="b4847ba9-2d85-4cd8-874f-ccd9a2a61641"/>
+          <ATTRIBUTES>
+            <ATT name="TypeConstraint"></ATT>
+            <ATT name="Value"><![CDATA[false]]></ATT>
+            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">PackageVisibility</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[T1attacking]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Type">
+              <FOREIGNID name="boolean" mc="Standard.DataType" uid="00000004-0000-0005-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="EFFT2" mc="Standard.Attribute" uid="7b040b8e-2198-42e5-adbd-2ab3b33c0010"/>
+          <ATTRIBUTES>
+            <ATT name="TypeConstraint"></ATT>
+            <ATT name="Value"><![CDATA[0]]></ATT>
+            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Private</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[EFFT2]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Type">
+              <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="EFFT1" mc="Standard.Attribute" uid="23070c3e-8832-4e2c-ab72-75cd651462a1"/>
+          <ATTRIBUTES>
+            <ATT name="TypeConstraint"></ATT>
+            <ATT name="Value"><![CDATA[0]]></ATT>
+            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Private</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[EFFT1]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Type">
+              <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="CombatFini" mc="Standard.Attribute" uid="a68d1bd7-5d1b-4bb5-818a-8588c1e8608b"/>
+          <ATTRIBUTES>
+            <ATT name="TypeConstraint"></ATT>
+            <ATT name="Value"><![CDATA[false]]></ATT>
+            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">PackageVisibility</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[CombatFini]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Type">
+              <FOREIGNID name="boolean" mc="Standard.DataType" uid="00000004-0000-0005-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="HP2" mc="Standard.Attribute" uid="775f745f-75b1-4727-9177-a8099127f74f"/>
+          <ATTRIBUTES>
+            <ATT name="TypeConstraint"></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">PackageVisibility</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[HP2]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Type">
+              <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
+            </LINK>
+            <COMP relation="Tag">
+              <OBJECT>
+                <ID name="" mc="Standard.TaggedValue" uid="656abd3f-4902-4d7a-a3b6-405eddae1e7b"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Definition">
+                    <FOREIGNID name="JavaNoInitValue" mc="Standard.TagType" uid="00d007fc-0003-bf52-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="HP1" mc="Standard.Attribute" uid="afdc189b-24d4-4476-9bd0-f5ce82e36213"/>
+          <ATTRIBUTES>
+            <ATT name="TypeConstraint"></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">PackageVisibility</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[HP1]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Type">
+              <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
+            </LINK>
+            <COMP relation="Tag">
+              <OBJECT>
+                <ID name="" mc="Standard.TaggedValue" uid="7abbc274-e8c6-45e4-a750-e3bc8fccb878"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Definition">
+                    <FOREIGNID name="JavaNoInitValue" mc="Standard.TagType" uid="00d007fc-0003-bf52-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="OwnedEnd">
+        <OBJECT>
+          <ID name="Action1" mc="Standard.AssociationEnd" uid="8befe627-dd0a-4666-9dc2-10acf27114e5"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">PackageVisibility</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[Action1]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="fce2e4df-f74d-4916-a72b-d7e75a66a0d5"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="Action1" mc="Standard.AssociationEnd" uid="8befe627-dd0a-4666-9dc2-10acf27114e5"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="df776772-42cb-47dc-9ec9-77aa62da3e01"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="df776772-42cb-47dc-9ec9-77aa62da3e01"/>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="e0b79b65-3ad9-4b2e-818a-aba750ea599f"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[null]]></ATT>
+                  <ATT name="MimeType"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaInitValue" mc="Standard.NoteType" uid="00380080-0000-0994-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Action2" mc="Standard.AssociationEnd" uid="681d2214-c729-4748-a900-1d0e0820281f"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">PackageVisibility</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[Action2]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Ability" mc="Standard.Class" uid="c7a8a436-f219-4682-8df8-5fe8c00d2342"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="dc536e47-92e6-4f65-8d62-18ef8afb672c"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="Action2" mc="Standard.AssociationEnd" uid="681d2214-c729-4748-a900-1d0e0820281f"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="acc460a9-7897-4389-aba9-259ac12057b3"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="acc460a9-7897-4389-aba9-259ac12057b3"/>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="cc903f65-7aef-41dc-ace4-6369803e1c26"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[null]]></ATT>
+                  <ATT name="MimeType"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaInitValue" mc="Standard.NoteType" uid="00380080-0000-0994-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="C1" mc="Standard.AssociationEnd" uid="7d9dd4c7-fb3f-4eb1-bb6f-9fb5d90d846b"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Private</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[C1]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="5fc03df4-d49c-47dd-989d-4416e9508310"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="C1" mc="Standard.AssociationEnd" uid="7d9dd4c7-fb3f-4eb1-bb6f-9fb5d90d846b"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="3d6a8786-6bee-45d3-9010-de265868477b"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="3d6a8786-6bee-45d3-9010-de265868477b"/>
+            </COMP>
+            <COMP relation="Tag">
+              <OBJECT>
+                <ID name="" mc="Standard.TaggedValue" uid="e7c3e482-08f3-451a-a961-b109e081d276"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Definition">
+                    <FOREIGNID name="JavaNoInitValue" mc="Standard.TagType" uid="00d007fc-0003-bf52-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="C2" mc="Standard.AssociationEnd" uid="7492e773-73b9-4de4-88f9-9dae07d0b349"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Private</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[C2]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="fbab0644-2ec2-4263-a0c4-b919991a232b"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="C2" mc="Standard.AssociationEnd" uid="7492e773-73b9-4de4-88f9-9dae07d0b349"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="282eb452-bab5-440d-b8bf-422fa9e75911"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="282eb452-bab5-440d-b8bf-422fa9e75911"/>
+            </COMP>
+            <COMP relation="Tag">
+              <OBJECT>
+                <ID name="" mc="Standard.TaggedValue" uid="dd58c1e9-cde5-407d-bf76-dea1ffa8a39a"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Definition">
+                    <FOREIGNID name="JavaNoInitValue" mc="Standard.TagType" uid="00d007fc-0003-bf52-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Surrender" mc="Standard.AssociationEnd" uid="0843a324-2832-4617-a814-8f96414985e4"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Private</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[Surrender]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="66678d29-8d03-4caa-8372-be1a6b163404"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="Surrender" mc="Standard.AssociationEnd" uid="0843a324-2832-4617-a814-8f96414985e4"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="ba834415-0bf1-43a3-8c20-c6f369846771"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="ba834415-0bf1-43a3-8c20-c6f369846771"/>
+            </COMP>
+            <COMP relation="Descriptor">
+              <OBJECT>
+                <ID name="" mc="Standard.Note" uid="1a469c96-3df4-4deb-b82f-7eec88e54e65"/>
+                <ATTRIBUTES>
+                  <ATT name="Content"><![CDATA[null]]></ATT>
+                  <ATT name="MimeType"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Model">
+                    <FOREIGNID name="JavaInitValue" mc="Standard.NoteType" uid="00380080-0000-0994-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="J1" mc="Standard.AssociationEnd" uid="da89214e-ebdd-4d28-9032-6bd29fb942b4"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">PackageVisibility</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[J1]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="95603a58-9300-4671-8416-f79ea7926af6"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="J1" mc="Standard.AssociationEnd" uid="da89214e-ebdd-4d28-9032-6bd29fb942b4"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="d6606ce0-4a03-4db3-a27c-637244615105"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="d6606ce0-4a03-4db3-a27c-637244615105"/>
+            </COMP>
+            <COMP relation="Tag">
+              <OBJECT>
+                <ID name="" mc="Standard.TaggedValue" uid="58a3aeee-3a5c-49bb-be50-3f3dca7c067d"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Definition">
+                    <FOREIGNID name="JavaNoInitValue" mc="Standard.TagType" uid="00d007fc-0003-bf52-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="J2" mc="Standard.AssociationEnd" uid="f1a3989e-0423-456c-999e-d62a10fcddf8"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">PackageVisibility</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[J2]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Character" mc="Standard.Class" uid="153b2283-0ed3-4e2e-bc30-46dc90704ce5"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="7b03ae23-122e-4bb9-87c7-d37c79588d83"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="J2" mc="Standard.AssociationEnd" uid="f1a3989e-0423-456c-999e-d62a10fcddf8"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="3101513b-23e3-47b8-9267-df98ce5b7fa8"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="3101513b-23e3-47b8-9267-df98ce5b7fa8"/>
+            </COMP>
+            <COMP relation="Tag">
+              <OBJECT>
+                <ID name="" mc="Standard.TaggedValue" uid="922936a0-5b26-4917-a2a3-b1e564a61140"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Definition">
+                    <FOREIGNID name="JavaNoInitValue" mc="Standard.TagType" uid="00d007fc-0003-bf52-0000-000000000000"/>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <LINK relation="Extension">
+        <FOREIGNID name="JavaClass" mc="Standard.Stereotype" uid="01ec23a8-0000-0258-0000-000000000000"/>
+      </LINK>
+      <COMP relation="Tag">
+        <OBJECT>
+          <ID name="" mc="Standard.TaggedValue" uid="79ed8545-b93f-4da5-848d-db96ff5baef9"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Actual">
+              <OBJECT>
+                <ID name="" mc="Standard.TagParameter" uid="e55f112e-c2fd-4686-af77-11e0f25a199a"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"><![CDATA[java.util.*]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <LINK relation="Definition">
+              <FOREIGNID name="JavaImport" mc="Standard.TagType" uid="003800a8-0000-0155-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
